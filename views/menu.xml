@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+
+        <menuitem name="Reports" id="report_menu" parent="climbing_gym.menu_root"/>
+        <menuitem name="Email report" id="report_menu_item_1" parent="report_menu" action="email_report_list_action"/>
+
+        <menuitem name="Dashboard" id="menu_dashboard" parent="climbing_gym.menu_root" action="climbing_gym_dashboard"/>
+
+    </data>
+</odoo>

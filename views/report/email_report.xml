@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+        <report id="climbing_gym.email_report_report_pdf"
+                string="General status (PDF)"
+                model="climbing_gym.email_report"
+                report_type="qweb-pdf"
+                name="climbing_gym_report.email_report_template"
+        />
+
+        <report id="climbing_gym.email_report_web"
+                string="General status (Web)"
+                model="climbing_gym.email_report"
+                report_type="qweb-html"
+                name="climbing_gym_report.email_report_template"
+        />
+
+        <template id="email_report_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="meg">
+                    <t t-call="web.external_layout">
+                        <div class="header">CABA</div>
+                        <div class="page">
+                            <h2>Climbing gym report</h2>
+                            <h3>
+                                <span t-field="meg.name"/>
+                                -
+                                <span t-field="meg.year"/>
+                                /
+                                <span t-field="meg.month"/>
+                            </h3>
+
+                            <h2>Societary state</h2>
+                            <table class="table table-condensed" style="border: 1px solid #9999">
+                                <tbody>
+                                    <tr class="border-black">
+                                        <td>
+                                            <strong>Membership type</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Pending</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Active</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Overdue</strong>
+                                        </td>
+                                        <td>
+                                            <strong>Cancelled</strong>
+                                        </td>
+                                    </tr>
+
+                                    <tr t-foreach="membership_status" t-as="cont">
+                                        <td>
+                                            <span t-esc="cont['name']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="cont['pending']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="cont['active']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="cont['overdue']"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="cont['cancel']"/>
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="border-black">
+                                        <td>
+                                            <b>Total :</b>
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span t-esc="membership_status_totals['pending']"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span t-esc="membership_status_totals['active']"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span t-esc="membership_status_totals['overdue']"/>
+                                            </strong>
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span t-esc="membership_status_totals['cancel']"/>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <p>Generado:
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                            </p>
+                            <small>Centro Andino Buenos Aires</small>
+                        </div>
+                    </t>
+                </t>
+            </t>
+
+
+        </template>
+    </data>
+</odoo>
