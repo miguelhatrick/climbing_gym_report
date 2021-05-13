@@ -16,12 +16,13 @@
     'version': '12.0.2',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'climbing_gym'],
+    'depends': ['base', 'climbing_gym', 'mass_mailing'],
 
     # always loaded
     'data': [
         'security/ir.model.access.csv',
         'data/digest_data.xml',
+        'data/mass_mail.xml',
         'views/email_report.xml',
         'views/dashboard.xml',
         'views/report/email_report.xml',

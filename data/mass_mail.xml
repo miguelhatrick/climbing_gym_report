@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+
+
+        <!-- Create mailing lists -->
+        <record id="mass_mail_list_weekly_report_climbing_gym" model="mail.mass_mailing.list">
+            <field name="name">Climbing gym weekly report</field>
+        </record>
+
+        <record id="mass_mail_list_monthly_report_climbing_gym" model="mail.mass_mailing.list">
+            <field name="name">Climbing gym monthly report</field>
+        </record>
+
+
+    </data>
+</odoo>

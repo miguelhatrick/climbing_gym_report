@@ -45,82 +45,40 @@ class EmailReport(models.Model):
         for _id in self.ids:
             """ this method called from button action in view xml """
             # generate pdf from report, use report's id as reference
-            REPORT_ID = 'climbing_gym.report_report_pdf'
-            pdf = self.env.ref(REPORT_ID).render_qweb_pdf(_id)
+
+            test = self.create_mass_mailing(_id)
+
+            pdf = self.env.ref('climbing_gym.email_report_report_pdf').render_qweb_pdf(_id)
             # pdf result is a list
             b64_pdf = base64.b64encode(pdf[0])
 
             # save pdf as attachment
-            ATTACHMENT_NAME = "Climbing_Gym_Report_%04d" % _id
+            _attachment_name = "Climbing_Gym_Report_%04d" % _id
             return self.env['ir.attachment'].create({
-                'name': ATTACHMENT_NAME,
+                'name': _attachment_name,
                 'type': 'binary',
                 'datas': b64_pdf,
-                'datas_fname': ATTACHMENT_NAME + '.pdf',
-                'store_fname': ATTACHMENT_NAME,
+                'datas_fname': _attachment_name + '.pdf',
+                'store_fname': _attachment_name,
                 'res_model': self._name,
                 'res_id': self.id,
                 'mimetype': 'application/x-pdf'
             })
 
+    def create_mass_mailing(self, _id):
 
-class ReportEmailReport(models.AbstractModel):
-    """Abstract Model for report template.
+        html = self.env.ref('climbing_gym.email_report_web').render_qweb_html([_id])
+        # pdf result is a list
+        # html = base64.b64encode(pdf[0])
 
-    for `_name` model, please use `report.` as prefix then add `module_name.report_name`.
-    """
+        _send_date = datetime.now() + timedelta(minutes=5)
 
-    _name = 'report.climbing_gym_report.email_report_template'
 
-    @api.model
-    def _get_report_values(self, docids, data=None):
-        print('Entered report get document values')
-        print(docids)
-
-        # MEMBERSHIP DATA
-        _membership_status, _membership_status_totals = self._get_membership_status(docids)
-
-        _docs = self.env['climbing_gym.email_report'].search([('id', 'in', docids)])
-
-        return {
-            'doc_ids': docids,
-            'doc_model': 'climbing_gym.email_report',
-            'docs': _docs,
-            'access_package_sales': None,
-            'event_registrations': None,
-            'event_group_registrations': None,
-            'membership_status': _membership_status,
-            'membership_status_totals': _membership_status_totals,
-            'tickets': None,
-            'sales_web': None,
-            'sales_pdv': None,
-            'invoicing': None,
-
-        }
-
-    def _get_membership_status(self, report_id):
-
-        # Membership status
-        _membership_ids = self.env['climbing_gym.membership'].search([('state', '=', 'active')], order='name desc')
-
-        _status_list = ['pending', 'active', 'overdue', 'cancel']
-        _membership_status = []
-        _membership_status_totals = {}
-
-        for mss in _status_list:
-            _membership_status_totals[mss] = 0
-
-        for _membership in _membership_ids:
-            _m = {'name': _membership.name}
-            for mss in _status_list:
-                _m[mss] = 0
-
-            _members_ids = self.env['climbing_gym.member_membership'].search([('membership_id', '=', _membership.id)])
-
-            for _member in _members_ids:
-                _m[_member.state] = _m[_member.state] + 1
-                _membership_status_totals[_member.state] = _membership_status_totals[_member.state] + 1
-
-            _membership_status.append(_m)
-
-        return _membership_status, _membership_status_totals
+        test = self.env['mail.mass_mailing'].create({
+            'name': 'TEST GUEROOOO',
+            'body_html': html[0].decode('utf-8'),
+            'state': 'in_queue',
+            'schedule_date': _send_date,
+            'contact_list_ids': [(6, 0, [self.env.ref('climbing_gym_report.mass_mail_list_weekly_report_climbing_gym').id])],
+        })
+        return test
