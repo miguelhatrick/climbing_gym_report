@@ -38,6 +38,11 @@
                                     <field name="year"/>
                                     <field name="week_number"/>
                                 </group>
+                                <group string="Report dates">
+                                     <field name="date_tz"/>
+                                     <field name="date_start"/>
+                                     <field name="date_end"/>
+                                </group>|
                             </page>
                         </notebook>
                     </sheet>
@@ -58,6 +63,8 @@
                     <field name="month"/>
                     <field name="year"/>
                     <field name="week_number"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
                 </tree>
             </field>
         </record>
