@@ -70,7 +70,9 @@ class EmailReport(models.Model):
 
         _tz = pytz.timezone(self.date_tz)
 
-        _date_start = _tz.localize(datetime.strptime(f'{self.year}-M{int(self.month)}-1', "%Y-M%m-%w"))
+        _temp = "'%d-M%d-1" % (self.year, int(self.month))
+
+        _date_start = _tz.localize(datetime.strptime(_temp, "%Y-M%m-%w"))
         _date_end = _date_start + relativedelta.relativedelta(months=1) - timedelta(seconds=1)
 
         # Convert to UTC before adding
