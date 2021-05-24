@@ -37,8 +37,8 @@ class EmailReport(models.Model):
 
     week_number = fields.Selection(week_choices, "Week number", required=False, default=None)
 
-    date_start = fields.Datetime("Report start", required=True, default=None)
-    date_end = fields.Datetime("Report end", required=True, default=None)
+    date_start = fields.Datetime("Report start", required=False, default=None)
+    date_end = fields.Datetime("Report end", required=False, default=None)
 
     date_tz = fields.Selection('_tz_get', string='Timezone', required=True,
                                default=lambda self: self.env.user.tz or 'UTC')
