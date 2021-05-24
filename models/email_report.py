@@ -70,7 +70,7 @@ class EmailReport(models.Model):
 
         _tz = pytz.timezone(self.date_tz)
 
-        _temp = "'%d-M%d-1" % (self.year, int(self.month))
+        _temp = "%d-M%d-1" % (self.year, int(self.month))
 
         _date_start = _tz.localize(datetime.strptime(_temp, "%Y-M%m-%w"))
         _date_end = _date_start + relativedelta.relativedelta(months=1) - timedelta(seconds=1)
@@ -90,7 +90,7 @@ class EmailReport(models.Model):
 
         _tz = pytz.timezone(self.date_tz)
 
-        _temp = "'%d-W%d-1" % (self.year, int(self.week_number) - 1)
+        _temp = "%d-W%d-1" % (self.year, int(self.week_number) - 1)
         _date_start = _tz.localize(datetime.strptime(_temp, "%Y-W%W-%w"))
         _date_end = _date_start + timedelta(days=7) - timedelta(seconds=1)
 
