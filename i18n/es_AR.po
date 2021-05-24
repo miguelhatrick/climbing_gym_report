@@ -1,0 +1,711 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* climbing_gym_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-23 22:47+0000\n"
+"PO-Revision-Date: 2021-05-23 20:05-0300\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es_AR\n"
+"X-Generator: Poedit 2.4.3\n"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "10"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "11"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "12"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "13"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "14"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "15"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "16"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "17"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "18"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "19"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "20"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,year:0
+msgid "2021"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,year:0
+msgid "2022"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,year:0
+msgid "2023"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,year:0
+msgid "2024"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,year:0
+msgid "2025"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "21"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "22"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "23"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "24"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "25"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "26"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "27"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "28"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "29"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "30"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "31"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "32"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "33"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "34"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "35"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "36"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "37"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "38"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "39"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "40"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "41"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "42"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "43"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "44"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "45"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "46"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "47"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "48"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "49"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "50"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "51"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "52"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,week_number:0
+msgid "53"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<b>Total :</b>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_monthly_report_climbing_gym
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_weekly_report_climbing_gym
+msgid ""
+"<font>7</font>\n"
+"    <strong>Business Hacks</strong>\n"
+"    <span> to<br>boost your marketing</span>"
+msgstr ""
+"<font>7</font>\n"
+"    <strong>Ataques a negocios</strong>\n"
+"    <span> to<br>Impulas tu marketing</span>"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<small>Centro Andino Buenos Aires</small>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<strong>Active</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<strong>Cancelled</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<strong>Membership type</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<strong>Overdue</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "<strong>Pending</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "April"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Are you sure you want to do this?"
+msgstr "Está seguro que desea hacer esto?"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_attachment_count
+msgid "Attachment Count"
+msgstr "Conteo de archivos adjuntos"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "August"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Build"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,state:0
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
+msgid "Built"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:177
+#, python-format
+msgid "Categories"
+msgstr "Categorias"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "Climbing gym report"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: climbing_gym_report
+#: model:ir.actions.act_window,name:climbing_gym_report.climbing_gym_dashboard
+#: model:ir.ui.menu,name:climbing_gym_report.menu_dashboard
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.dashboard_form_view
+msgid "Dashboard"
+msgstr "Tablero"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Data"
+msgstr "Datos"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "December"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__display_name
+#: model:ir.model.fields,field_description:climbing_gym_report.field_report_climbing_gym_report_email_report_template__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: climbing_gym_report
+#: model:ir.ui.menu,name:climbing_gym_report.report_menu_item_1
+msgid "Email report"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "February"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "Generado:"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Generate Attachment"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__id
+#: model:ir.model.fields,field_description:climbing_gym_report.field_report_climbing_gym_report_email_report_template__id
+msgid "ID"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_unread
+msgid "If checked new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "January"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_monthly_report_climbing_gym
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_weekly_report_climbing_gym
+msgid "Join our Marketing newsletter and get <strong>this white paper instantly</strong>"
+msgstr "Suscriíbete a nuestro boletín de noticias de Marketing y consigue <strong>este white paper de manera instántanea</strong>"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "July"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "June"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report____last_update
+#: model:ir.model.fields,field_description:climbing_gym_report.field_report_climbing_gym_report_email_report_template____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjuntos principales"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "March"
+msgstr ""
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "May"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.actions.act_window,name:climbing_gym_report.act_member_memberships
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.dashboard_form_view
+msgid "Memberships"
+msgstr "Membresías"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__month
+msgid "Month"
+msgstr "Mes"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "Monthly"
+msgstr "Mensual"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: climbing_gym_report
+#: model_terms:ir.actions.act_window,help:climbing_gym_report.email_report_list_action
+msgid "No records yet!"
+msgstr "Sin registros aún!"
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:111
+#, python-format
+msgid "None"
+msgstr "Ninguno"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "November"
+msgstr "Noviembre"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_has_error_counter
+msgid "Number of error"
+msgstr "Número de error"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leidos"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "October"
+msgstr "Octubre"
+
+#. module: climbing_gym_report
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_monthly_report_climbing_gym
+#: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_weekly_report_climbing_gym
+msgid "Odoo Presents"
+msgstr "Odoo Presenta"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,state:0
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:178
+#, python-format
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: climbing_gym_report
+#: model:ir.actions.act_window,name:climbing_gym_report.email_report_list_action
+msgid "Report"
+msgstr "Informe"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Report dates"
+msgstr "Fechas del reporte"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__date_end
+msgid "Report end"
+msgstr "Fin del reporte"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_form_view
+msgid "Report form"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__date_start
+msgid "Report start"
+msgstr "Inicio del reporte"
+
+#. module: climbing_gym_report
+#: model:ir.ui.menu,name:climbing_gym_report.report_menu
+msgid "Reports"
+msgstr "Informes"
+
+#. module: climbing_gym_report
+#: model:ir.model,name:climbing_gym_report.model_climbing_gym_email_report
+msgid "Reports generated for email"
+msgstr "Reportes generados para email"
+
+#. module: climbing_gym_report
+#: selection:climbing_gym.email_report,month:0
+msgid "September"
+msgstr "Septiembre"
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "Societary state"
+msgstr "Estado societario"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__state
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
+msgid "Status"
+msgstr "Estado"
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:176
+#, python-format
+msgid "Tickets"
+msgstr "Tickets"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__date_tz
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:160
+#, python-format
+msgid "Undefined"
+msgstr "Sin definir"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes por leer"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes sin leer"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,help:climbing_gym_report.field_climbing_gym_email_report__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__week_number
+msgid "Week number"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__year
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
+msgid "Year"
+msgstr "Año"
+
+#. module: climbing_gym_report
+#: model:ir.model,name:climbing_gym_report.model_report_climbing_gym_report_email_report_template
+msgid "report.climbing_gym_report.email_report_template"
+msgstr ""
