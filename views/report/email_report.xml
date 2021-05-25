@@ -13,20 +13,32 @@
                 report_type="qweb-html"
                 name="climbing_gym_report.email_report_template"
         />
+ <!---
+        <template id="external_layout_header_custom" inherit_id="external_layout_standard">
+        <xpath expr="//div[1]" position="replace">
+        <div><p>........</p></div>
+        </xpath>
+        </template>
+-->
 
         <template id="email_report_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="meg">
-                    <t t-call="web.external_layout">
-                        <div class="header">Report</div>
+                    <t t-call="climbing_gym_report.external_layout_climbing_gym">
+
+                        <div class="header">
+                           <h3>Header title</h3>
+                        </div>
                         <div class="page">
-                            <h2>Monthly report</h2>
+                            <div style="text-align=center">
+                            <h1>Monthly report</h1>
                             <strong>
                                 <span t-field="meg.name"/> - <span t-field="meg.year"/> /<span t-field="meg.month"/>
                             </strong>
                             <strong>
                                 <span t-field="meg.date_start"/> - <span t-field="meg.date_end"/>
                             </strong>
+                                </div>
                         </div>
 
                         <div class="page" style="page-break-before:always;">
@@ -236,9 +248,9 @@
 
 
                 <h3>Word cloud</h3>
-               <img class="media-object"
-             t-att-src="'data:image/png;base64,%s' % ticket_word_cloud"
-             style="max-height: 500px;"/>
+                <img class="media-object"
+                    t-att-src="'data:image/png;base64,%s' % ticket_word_cloud"
+                    style="max-height: 600px;"/>
 
             </xpath>
 

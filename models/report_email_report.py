@@ -255,7 +255,7 @@ class ReportEmailReport(models.AbstractModel):
         text = ' '.join(unique_list)
 
         # Create the word cloud object
-        word_cloud_object = WordCloud(width=1200, height=400, margin=0).generate(text)
+        word_cloud_object = WordCloud(width=1200, height=600, margin=0).generate(text)
 
         matplotlib.use('Agg')
 

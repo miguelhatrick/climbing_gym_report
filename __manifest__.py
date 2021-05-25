@@ -25,6 +25,7 @@
         'data/mass_mail.xml',
         'views/email_report.xml',
         'views/dashboard.xml',
+        'views/report/report_template.xml',
         'views/report/email_report.xml',
         'views/menu.xml'
 

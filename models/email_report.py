@@ -123,7 +123,8 @@ class EmailReport(models.Model):
             """ this method called from button action in view xml """
             # generate pdf from report, use report's id as reference
 
-            test = self.create_mass_mailing(_id)
+            # TODO: Disable this for now
+            # test = self.create_mass_mailing(_id)
 
             pdf = self.env.ref('climbing_gym.email_report_report_pdf').render_qweb_pdf(_id)
             # pdf result is a list
