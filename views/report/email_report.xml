@@ -20,115 +20,231 @@
                     <t t-call="web.external_layout">
                         <div class="header">Report</div>
                         <div class="page">
-                            <h2>Monthly</h2>
-                            <h3>
-                                <span t-field="meg.name"/>
-                                -
-                                <span t-field="meg.year"/>
-                                /
-                                <span t-field="meg.month"/>
-                            </h3>
-                            <h3>
-                               <span t-field="meg.date_start"/> - <span t-field="meg.date_end"/>
-                            </h3>
-
-
-                            <h2>Societary state</h2>
-                            <table class="table table-condensed" style="border: 1px solid #9999">
-                                <tbody>
-                                    <tr class="border-black">
-                                        <td>
-                                            <strong> Membership type </strong>
-                                        </td>
-                                        <td>
-                                            <strong> Pending </strong>
-                                        </td>
-                                        <td>
-                                            <strong> Active </strong>
-                                        </td>
-                                        <td>
-                                            <strong> Overdue </strong>
-                                        </td>
-                                        <td>
-                                            <strong> Cancelled </strong>
-                                        </td>
-                                    </tr>
-
-                                    <tr t-foreach="membership_status" t-as="cont">
-                                        <td>
-                                            <span t-esc="cont['name']"/>
-                                        </td>
-                                        <td>
-                                            <span t-esc="cont['pending']"/>
-                                        </td>
-                                        <td>
-                                            <span t-esc="cont['active']"/>
-                                        </td>
-                                        <td>
-                                            <span t-esc="cont['overdue']"/>
-                                        </td>
-                                        <td>
-                                            <span t-esc="cont['cancel']"/>
-                                        </td>
-
-                                    </tr>
-
-                                    <tr class="border-black">
-                                        <td>
-                                            <b>Total :</b>
-                                        </td>
-                                        <td>
-                                            <strong>
-                                                <span t-esc="membership_status_totals['pending']"/>
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            <strong>
-                                                <span t-esc="membership_status_totals['active']"/>
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            <strong>
-                                                <span t-esc="membership_status_totals['overdue']"/>
-                                            </strong>
-                                        </td>
-                                        <td>
-                                            <strong>
-                                                <span t-esc="membership_status_totals['cancel']"/>
-                                            </strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <h2>Monthly report</h2>
+                            <strong>
+                                <span t-field="meg.name"/> - <span t-field="meg.year"/> /<span t-field="meg.month"/>
+                            </strong>
+                            <strong>
+                                <span t-field="meg.date_start"/> - <span t-field="meg.date_end"/>
+                            </strong>
                         </div>
 
-                        <img class="media-object"
-                            t-att-src="'data:image/png;base64,%s' % membership_bar_graph"
-                            style="max-height: 500px;" />
+                        <div class="page" style="page-break-before:always;">
+                            <h2>Membership status</h2>
+                            <div id="membership_data"></div>
+                        </div>
+
+                        <div class="page" style="page-break-before:always;">
+                            <h2>Tickets</h2>
+                            <div id="ticket_data"></div>
+                        </div>
+
+                        <div class="page" style="page-break-before:always;">
+                            <h2></h2>
+                            <div id=""></div>
+                        </div>
+
+                         <div class="page" style="page-break-before:always;">
+                            <h2></h2>
+                            <div id=""></div>
+                        </div>
+
+                        <div class="page" style="page-break-before:always;">
+                            <h2></h2>
+                            <div id=""></div>
+                        </div>
+
+                         <div class="page" style="page-break-before:always;">
+                            <h2></h2>
+                            <div id=""></div>
+                        </div>
+
+                        <div class="page" style="page-break-before:always;">
+                            <h2></h2>
+                            <div id=""></div>
+                        </div>
 
 
 
 
-
-                        <img class="media-object"
-                            t-att-src="'data:image/png;base64,%s' % ticket_word_cloud"
-                            style="max-height: 500px;" />
-
-                        <img class="media-object"
-                            t-att-src="'data:image/png;base64,%s' % ticket_bar_graph"
-                            style="max-height: 500px;" />
 
                         <div class="footer">
                             <p>Generado:
                                 <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
                             </p>
-                            <small>Centro Andino Buenos Aires</small>
+                            <small>Climbing gym report module</small>
                         </div>
+
                     </t>
                 </t>
             </t>
 
+        </template>
+
+
+        <template id="email_report_membership_data" inherit_id="email_report_template" name="Report membership data">
+            <xpath expr="//div[@id='membership_data']" position="inside">
+
+                <p>This report shows the status of memberships on this specific date :
+                    <strong>
+                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    </strong>
+                </p>
+
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <td>
+                                <strong>Membership type</strong>
+                            </td>
+                            <td>
+                                <strong>Pending</strong>
+                            </td>
+                            <td>
+                                <strong>Active</strong>
+                            </td>
+                            <td>
+                                <strong>Overdue</strong>
+                            </td>
+                            <td>
+                                <strong>Cancelled</strong>
+                            </td>
+                        </tr>
+
+                        <tr t-foreach="membership_status" t-as="cont">
+                            <td>
+                                <span t-esc="cont['name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['pending']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['active']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['overdue']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['cancel']"/>
+                            </td>
+
+                        </tr>
+
+                        <tr class="border-black">
+                            <td>
+                                <b>Total :</b>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="membership_status_totals['pending']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="membership_status_totals['active']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="membership_status_totals['overdue']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="membership_status_totals['cancel']"/>
+                                </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % membership_bar_graph"
+                     style="max-height: 500px;"/>
+
+            </xpath>
 
         </template>
+
+
+
+       <template id="email_report_tickets_data" inherit_id="email_report_template" name="Report tickets data">
+            <xpath expr="//div[@id='ticket_data']" position="inside">
+
+                <p>Total opened:
+                    <strong>
+                        <span t-esc="ticket_status_totals['open'] + ticket_status_totals['close']"/>
+                    </strong>
+                </p>
+
+                <p>Total closed:
+                    <strong>
+                        <span t-esc="tickets_total_closed"/>
+                    </strong>
+                </p>
+
+                <p>On this date
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                    a total of
+                    <strong>
+                        <span t-esc="tickets_total_pending"/>
+                    </strong>
+                    tickets are pending
+                </p>
+
+
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <td>
+                                <strong>Category</strong>
+                            </td>
+                            <td>
+                                <strong>Open</strong>
+                            </td>
+                            <td>
+                                <strong>Closed</strong>
+                            </td>
+                            <td>
+                                <strong>Response (days)</strong>
+                            </td>
+                        </tr>
+
+                        <tr t-foreach="ticket_status" t-as="cont">
+                            <td>
+                                <span t-esc="cont['name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['open']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['close']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['average_response']"/>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Membership status graph</h3>
+                <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % ticket_bar_graph"
+                     style="max-height: 500px;"/>
+
+
+                <h3>Word cloud</h3>
+               <img class="media-object"
+             t-att-src="'data:image/png;base64,%s' % ticket_word_cloud"
+             style="max-height: 500px;"/>
+
+            </xpath>
+
+        </template>
+
+
+
     </data>
 </odoo>

@@ -25,8 +25,10 @@ class ReportEmailReport(models.AbstractModel):
         print('Entered report get document values')
         print(docids)
 
-        # MAP SALES
+        # Documents, should be only one for now
+        _docs = self.env['climbing_gym.email_report'].search([('id', 'in', docids)])
 
+        # MAP SALES
 
 
         # TICKET RESERVATIONS
@@ -35,12 +37,11 @@ class ReportEmailReport(models.AbstractModel):
 
         # MEMBERSHIP DATA
         _membership_status, _membership_status_totals = self._get_membership_status(docids)
-
         _membership_bar_graph = self._get_membership_bar_graph(_membership_status)
 
-        _docs = self.env['climbing_gym.email_report'].search([('id', 'in', docids)])
-
         # Tickets wordcloud
+        _ticket_status, _ticket_totals, _tickets_total_closed, _tickets_total_pending = self._get_ticket_status(
+            _docs.date_start, _docs.date_end)
         _ticket_word_cloud = self._get_ticket_wordcloud(_docs.date_start, _docs.date_end)
         _ticket_bar_graph = self._get_ticket_bar_graph(_docs.date_start, _docs.date_end)
 
@@ -67,7 +68,11 @@ class ReportEmailReport(models.AbstractModel):
             'membership_status_totals': _membership_status_totals,
             'membership_bar_graph': _membership_bar_graph,
 
-            'tickets': None,
+            'ticket_status': _ticket_status,
+            'ticket_status_totals': _ticket_totals,
+            'tickets_total_closed': _tickets_total_closed,
+            'tickets_total_pending': _tickets_total_pending,
+
             'ticket_word_cloud': _ticket_word_cloud,
             'ticket_bar_graph': _ticket_bar_graph,
 
@@ -104,6 +109,63 @@ class ReportEmailReport(models.AbstractModel):
             _membership_status.append(_m)
 
         return _membership_status, _membership_status_totals
+
+
+
+
+    def _get_ticket_status(self, start_date, end_date):
+
+        _ticket_categories = self.env['helpdesk.ticket.category'].search([('active', '=', True)], order='name desc')
+
+        # Tickets closed in the time period
+        _closed_tickets = len(self.env['helpdesk.ticket'].search(
+            [('closed_date', '>=', start_date), ('closed_date', '<=', end_date)], order='number desc'))
+
+        _pending_tickets = len(self.env['helpdesk.ticket'].search([('closed_date', '=', None)], order='number desc'))
+
+        # interested in response time, completion time
+
+        _status_list = ['open', 'close','average_response']
+        _ticket_status = []
+        _ticket_status_totals = {}
+
+        for mss in _status_list:
+            _ticket_status_totals[mss] = 0
+
+        for _ticket_category in _ticket_categories:
+            _m = {'name': _ticket_category.name}
+
+            for mss in _status_list:
+                _m[mss] = 0
+
+            # find members for each status
+            _created_tickets = self.env['helpdesk.ticket'].search(
+                [('create_date', '>=', start_date), ('create_date', '<=', end_date), ('category_id', '=', _ticket_category.id)],
+                order='number desc')
+
+            for _ticket in _created_tickets:
+
+                if _ticket.closed_date:
+                    _m['close'] += 1
+                    _ticket_status_totals['close'] += 1
+
+                    delta = _ticket.closed_date - _ticket.create_date
+                    days_diff = delta.days + delta.seconds / (3600 * 24)
+
+                    if _m['average_response'] == 0:
+                        _m['average_response'] = days_diff
+                    else:
+                        _m['average_response'] = (_m['average_response'] + days_diff) / 2
+
+                else:
+                    _m['open'] += 1
+
+            _ticket_status_totals['open'] += _m['open']
+            _ticket_status_totals['close'] += _m['close']
+
+            _ticket_status.append(_m)
+
+        return _ticket_status, _ticket_status_totals, _closed_tickets, _pending_tickets
 
     def _get_membership_bar_graph(self, _membership_data):
 

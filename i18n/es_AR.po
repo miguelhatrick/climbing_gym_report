@@ -1,21 +1,19 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* climbing_gym_report
+#	* climbing_gym_report
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-23 22:47+0000\n"
-"PO-Revision-Date: 2021-05-23 20:05-0300\n"
+"POT-Creation-Date: 2021-05-25 00:30+0000\n"
+"PO-Revision-Date: 2021-05-25 00:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: es_AR\n"
-"X-Generator: Poedit 2.4.3\n"
 
 #. module: climbing_gym_report
 #: selection:climbing_gym.email_report,week_number:0
@@ -263,19 +261,17 @@ msgid "53"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<b>Total :</b>"
 msgstr ""
 
 #. module: climbing_gym_report
 #: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_monthly_report_climbing_gym
 #: model_terms:mail.mass_mailing.list,popup_content:climbing_gym_report.mass_mail_list_weekly_report_climbing_gym
-msgid ""
-"<font>7</font>\n"
+msgid "<font>7</font>\n"
 "    <strong>Business Hacks</strong>\n"
 "    <span> to<br>boost your marketing</span>"
-msgstr ""
-"<font>7</font>\n"
+msgstr "<font>7</font>\n"
 "    <strong>Ataques a negocios</strong>\n"
 "    <span> to<br>Impulas tu marketing</span>"
 
@@ -285,28 +281,48 @@ msgid "<small>Centro Andino Buenos Aires</small>"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<strong>Active</strong>"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<strong>Cancelled</strong>"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "<strong>Category</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "<strong>Closed</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<strong>Membership type</strong>"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "<strong>Open</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<strong>Overdue</strong>"
 msgstr ""
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
 msgid "<strong>Pending</strong>"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "<strong>Response (days)</strong>"
 msgstr ""
 
 #. module: climbing_gym_report
@@ -351,15 +367,10 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: climbing_gym_report
-#: code:addons/climbing_gym_report/models/report_email_report.py:177
+#: code:addons/climbing_gym_report/models/report_email_report.py:314
 #, python-format
 msgid "Categories"
 msgstr "Categorias"
-
-#. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
-msgid "Climbing gym report"
-msgstr ""
 
 #. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__create_uid
@@ -513,6 +524,16 @@ msgid "May"
 msgstr ""
 
 #. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
+msgid "Membership status"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "Membership status graph"
+msgstr ""
+
+#. module: climbing_gym_report
 #: model:ir.actions.act_window,name:climbing_gym_report.act_member_memberships
 #: model_terms:ir.ui.view,arch_db:climbing_gym_report.dashboard_form_view
 msgid "Memberships"
@@ -535,8 +556,8 @@ msgstr "Mes"
 
 #. module: climbing_gym_report
 #: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
-msgid "Monthly"
-msgstr "Mensual"
+msgid "Monthly report"
+msgstr ""
 
 #. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__name
@@ -549,10 +570,10 @@ msgid "No records yet!"
 msgstr "Sin registros aún!"
 
 #. module: climbing_gym_report
-#: code:addons/climbing_gym_report/models/report_email_report.py:111
+#: code:addons/climbing_gym_report/models/report_email_report.py:244
 #, python-format
 msgid "None"
-msgstr "Ninguno"
+msgstr ""
 
 #. module: climbing_gym_report
 #: selection:climbing_gym.email_report,month:0
@@ -596,18 +617,24 @@ msgid "Odoo Presents"
 msgstr "Odoo Presenta"
 
 #. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "On this date"
+msgstr ""
+
+#. module: climbing_gym_report
 #: selection:climbing_gym.email_report,state:0
 msgid "Pending"
 msgstr "Pendiente"
 
 #. module: climbing_gym_report
-#: code:addons/climbing_gym_report/models/report_email_report.py:178
+#: code:addons/climbing_gym_report/models/report_email_report.py:315
 #, python-format
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr ""
 
 #. module: climbing_gym_report
 #: model:ir.actions.act_window,name:climbing_gym_report.email_report_list_action
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
 msgid "Report"
 msgstr "Informe"
 
@@ -647,21 +674,22 @@ msgid "September"
 msgstr "Septiembre"
 
 #. module: climbing_gym_report
-#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
-msgid "Societary state"
-msgstr "Estado societario"
-
-#. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__state
 #: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
 msgid "Status"
 msgstr "Estado"
 
 #. module: climbing_gym_report
-#: code:addons/climbing_gym_report/models/report_email_report.py:176
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_membership_data
+msgid "This report shows the status of memberships on this specific date :"
+msgstr ""
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:313
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_template
 #, python-format
 msgid "Tickets"
-msgstr "Tickets"
+msgstr "Entradas"
 
 #. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__date_tz
@@ -669,10 +697,20 @@ msgid "Timezone"
 msgstr "Zona horaria"
 
 #. module: climbing_gym_report
-#: code:addons/climbing_gym_report/models/report_email_report.py:160
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "Total closed:"
+msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "Total opened:"
+msgstr ""
+
+#. module: climbing_gym_report
+#: code:addons/climbing_gym_report/models/report_email_report.py:293
 #, python-format
 msgid "Undefined"
-msgstr "Sin definir"
+msgstr ""
 
 #. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__message_unread
@@ -700,12 +738,28 @@ msgid "Week number"
 msgstr ""
 
 #. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "Word cloud"
+msgstr ""
+
+#. module: climbing_gym_report
 #: model:ir.model.fields,field_description:climbing_gym_report.field_climbing_gym_email_report__year
 #: model_terms:ir.ui.view,arch_db:climbing_gym_report.report_search_view
 msgid "Year"
 msgstr "Año"
 
 #. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "a total of"
+msgstr ""
+
+#. module: climbing_gym_report
 #: model:ir.model,name:climbing_gym_report.model_report_climbing_gym_report_email_report_template
 msgid "report.climbing_gym_report.email_report_template"
 msgstr ""
+
+#. module: climbing_gym_report
+#: model_terms:ir.ui.view,arch_db:climbing_gym_report.email_report_tickets_data
+msgid "tickets are pending"
+msgstr ""
+
