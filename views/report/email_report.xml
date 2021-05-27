@@ -27,7 +27,7 @@
                     <t t-call="climbing_gym_report.external_layout_climbing_gym">
 
                         <div class="header">
-                           <h3>Header title</h3>
+                           <h3></h3>
                         </div>
                         <div class="page">
                             <div style="text-align: center; width: 100%;">
@@ -71,8 +71,8 @@
                         </div>
 
                          <div class="page" style="page-break-before:always;">
-                            <h2></h2>
-                            <div id=""></div>
+                            <h2>Invoice report</h2>
+                            <div id="invoice_data"></div>
                         </div>
 
                         <div class="page" style="page-break-before:always;">
@@ -95,7 +95,73 @@
 
 
 
-        <template id="email_report_sales_data" inherit_id="email_report_template" name="Report event sales data">
+
+        <template id="email_report_invoice_data" inherit_id="email_report_template" name="Report invoice data">
+            <xpath expr="//div[@id='invoice_data']" position="inside">
+
+                <p>This report shows invoice data between the following dates:
+                    <strong>
+                        <strong>
+                            <span t-field="meg.date_start"/>
+                            -
+                            <span t-field="meg.date_end"/>
+                        </strong>
+                    </strong>
+                </p>
+
+                <h3>Total sales:
+                    <span t-esc="'$ {:.2f}'.format(invoice_data['totals']['total'])"/>
+                </h3>
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Total</th>
+                        </tr>
+                        <tr t-foreach="invoice_data['data']" t-as="product" class="border-black">
+                            <td>
+                                <span t-esc="invoice_data['data'][product]['name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="invoice_data['data'][product]['total_qty']"/>
+                            </td>
+                            <td>
+                                <span t-esc="'$ {:.2f}'.format(invoice_data['data'][product]['total'])"/>
+                            </td>
+                        </tr>
+                        <tr class="border-black">
+                            <th>
+                                <div style="font-weight: bold">Totals :</div>
+                            </th>
+                            <th>
+                                <span t-esc="invoice_data['totals']['total_qty']"/>
+                            </th>
+                            <th>
+                                <span t-esc="'$ {:.2f}'.format(invoice_data['totals']['total'])"/>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % invoice_data_pos_cake"
+                     style="max-height: 500px;"/>
+
+
+
+
+
+            </xpath>
+
+        </template>
+
+
+
+
+
+        <template id="email_report_sales_data" inherit_id="email_report_template" name="Report sales data">
             <xpath expr="//div[@id='sales_data']" position="inside">
 
                 <p>This report shows the sales made between the following dates:

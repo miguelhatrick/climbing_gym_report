@@ -54,6 +54,12 @@ class ReportEmailReport(models.AbstractModel):
         _sales_data_web_cake = self._get_sales_cake_graph(_sales_data, 'website')
         _sales_data_pos_cake = self._get_sales_cake_graph(_sales_data, 'website')
 
+        _invoice_data = self._get_invoice_status(_docs.date_start, _docs.date_end)
+        _invoice_data_cake = self._get_sales_invoice_graph(_invoice_data)
+
+
+
+
 
         # General invoicing
 
@@ -90,10 +96,11 @@ class ReportEmailReport(models.AbstractModel):
             'sales_data_web_cake': _sales_data_web_cake,
             'sales_data_pos_cake': _sales_data_pos_cake,
 
-            'sales_pdv': None,
-            'invoicing': None,
+            'invoice_data': _invoice_data,
+            'invoice_data_pos_cake': _invoice_data_cake,
 
         }
+
 
     def _get_map_sales_data(self, start_date, end_date):
 
@@ -129,6 +136,42 @@ class ReportEmailReport(models.AbstractModel):
             _map_sale_data.append(_m)
 
         return _map_sale_data, _map_sale_data_totals
+
+
+    def _get_invoice_status(self, start_date, end_date):
+        _invoice_status = {}
+
+        # find members for each status
+        _invoices = self.env['account.invoice'].search(
+            [('date_invoice', '>=', start_date), ('date_invoice', '<=', end_date),
+             ('state', 'in', ['in_payment','paid'])],
+            order='id asc')
+
+        _totals = {
+            'total': 0,
+            'total_qty': 0
+        }
+
+        for _invoice in _invoices:
+
+            for _line in _invoice.invoice_line_ids:
+                _tmpl = _line.product_id.product_tmpl_id.id
+
+                if _tmpl not in _invoice_status:
+                    _invoice_status[_tmpl] = {
+                        'name': _line.product_id.product_tmpl_id.name,
+                        'products': {},
+                        'total': 0,
+                        'total_qty': 0
+                    }
+
+                _invoice_status[_tmpl]['total'] += _line.price_subtotal
+                _totals['total'] += _line.price_subtotal
+
+                _invoice_status[_tmpl]['total_qty'] += _line.quantity
+                _totals['total_qty'] += _line.quantity
+
+        return {'data': _invoice_status, 'totals': _totals}
 
     def _get_sales_status(self, start_date, end_date):
         _sales_data = {}
@@ -540,6 +583,27 @@ class ReportEmailReport(models.AbstractModel):
         plt.pie(values, labels=names, labeldistance=1.3,  wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
 
         #plt.legend()
+
+        my_stringIObytes = io.BytesIO()
+        plt.savefig(my_stringIObytes, format='png')
+        my_stringIObytes.seek(0)
+        return base64.b64encode(my_stringIObytes.read()).decode('utf-8')
+
+    def _get_sales_invoice_graph(self, _sales_data):
+        plt.clf()
+
+        names = []
+        values = []
+
+        for _product in _sales_data['data']:
+            names.append(_sales_data['data'][_product]['name'])
+            values.append(_sales_data['data'][_product]['total'])
+
+        # Label distance: gives the space between labels and the center of the pie
+        # labels=names, labeldistance=1.15,
+        plt.pie(values, labels=names, labeldistance=1.3, wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
+
+        # plt.legend()
 
         my_stringIObytes = io.BytesIO()
         plt.savefig(my_stringIObytes, format='png')
