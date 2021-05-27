@@ -70,10 +70,6 @@ class ReportEmailReport(models.AbstractModel):
 
             'event_data': _event_data,
 
-
-
-            'event_group_registrations': None,
-
             'membership_status': _membership_status,
             'membership_status_totals': _membership_status_totals,
             'membership_bar_graph': _membership_bar_graph,
