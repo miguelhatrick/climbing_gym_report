@@ -108,7 +108,7 @@
                     </strong>
                 </p>
 
-                <h3>Total sales: <span t-esc="sale_data['totals']['total_pos'] + sale_data['totals']['total_website']"/></h3>
+                <h3>Total sales: <span t-esc="'$ {:.2f}'.format(sale_data['totals']['total_pos'] + sale_data['totals']['total_website'])"/></h3>
                 <table class="table table-condensed" style="border: 1px solid #9999">
                     <tbody>
                         <tr class="border-black">
@@ -133,13 +133,13 @@
                                     <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_website']"/>
                                 </td>
                                 <td>
-                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_website']"/>
+                                    <span t-esc="'$ {:.2f}'.format(sale_data['data'][product]['products'][variant]['total_website'])"/>
                                 </td>
                                 <td>
                                     <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_pos']"/>
                                 </td>
                                 <td>
-                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_pos']"/>
+                                    <span t-esc="'$ {:.2f}'.format(sale_data['data'][product]['products'][variant]['total_pos'])"/>
                                 </td>
 
                             </tr>
@@ -153,13 +153,13 @@
                                     <span t-esc="sale_data['data'][product]['total_qty_website']"/>
                                 </th>
                                 <th>
-                                    <span t-esc="sale_data['data'][product]['total_website']"/>
+                                   <span t-esc="'$ {:.2f}'.format(sale_data['data'][product]['total_website'])"/>
                                 </th>
                                 <th>
                                     <span t-esc="sale_data['data'][product]['total_qty_pos']"/>
                                 </th>
                                 <th>
-                                    <span t-esc="sale_data['data'][product]['total_pos']"/>
+                                   <span t-esc="'$ {:.2f}'.format(sale_data['data'][product]['total_pos'])"/>
                                 </th>
                             </tr>
 
@@ -172,13 +172,13 @@
                                     Qty total:
                                 </th>
                                 <th>
-                                     <span t-esc="sale_data['data'][product]['total_qty_pos'] + sale_data['data'][product]['total_qty_website']"/>
+                                     <span t-esc="'{:.2f}'.format(sale_data['data'][product]['total_qty_pos'] + sale_data['data'][product]['total_qty_website'])"/>
                                 </th>
                                 <th>
                                     Sale total:
                                 </th>
                                 <th>
-                                    <span t-esc="sale_data['data'][product]['total_website'] + sale_data['data'][product]['total_pos']"/>
+                                   <span t-esc="'$ {:.2f}'.format(sale_data['data'][product]['total_website'] + sale_data['data'][product]['total_pos'])"/>
                                 </th>
                                 <th>
 
@@ -221,13 +221,13 @@
                                     <span t-esc="sale_data['totals']['total_qty_website']"/>
                                 </th>
                                 <th>
-                                    <span t-esc="sale_data['totals']['total_website']"/>
+                                   <span t-esc="'$ {:.2f}'.format(sale_data['totals']['total_website'])"/>
                                 </th>
                                 <th>
                                     <span t-esc="sale_data['totals']['total_qty_pos']"/>
                                 </th>
                                 <th>
-                                    <span t-esc="sale_data['totals']['total_pos']"/>
+                                    <span t-esc="'$ {:.2f}'.format(sale_data['totals']['total_pos'])"/>
                                 </th>
                             </tr>
 
@@ -292,7 +292,7 @@
                                 <span t-esc="event_data[location]['events'][event]['reservations']"/>
                             </td>
                             <td>
-                                <span t-esc="event_data[location]['events'][event]['assistance']"/>
+                                <span t-esc="'{:.2f}'.format(event_data[location]['events'][event]['assistance'])"/>
                             </td>
                         </tr>
 
@@ -307,7 +307,7 @@
                             </td>
                             <td>
                                 <strong>
-                                    <span t-esc="event_data[location]['assistance']"/>
+                                    <span t-esc="'{:.2f}'.format(event_data[location]['assistance'])"/>
                                 </strong>
                             </td>
                         </tr>
@@ -513,7 +513,7 @@
                                 <span t-esc="cont['close']"/>
                             </td>
                             <td>
-                                <span t-esc="cont['average_response']"/>
+                                <span t-esc="'{:.2f}'.format(cont['average_response'])"/>
                             </td>
 
                         </tr>

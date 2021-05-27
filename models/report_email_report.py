@@ -536,7 +536,10 @@ class ReportEmailReport(models.AbstractModel):
             values.append(_sales_data['data'][_product]['total_%s' % _domain])
 
         # Label distance: gives the space between labels and the center of the pie
-        plt.pie(values, labels=names, labeldistance=1.15, wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
+        # labels=names, labeldistance=1.15,
+        plt.pie(values, labels=names, labeldistance=1.3,  wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
+
+        #plt.legend()
 
         my_stringIObytes = io.BytesIO()
         plt.savefig(my_stringIObytes, format='png')
