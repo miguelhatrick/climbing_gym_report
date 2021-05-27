@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <report id="report_member_membership"
+                string="Member membership report"
+                model="climbing_gym.member_membership"
+                report_type="qweb-pdf"
+                name="climbing_gym_report.report_member_membership_template"
+        />
+
+        <template id="report_member_membership_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="header"><span t-if="company.name"/></div>
+                        <div class="page">
+                            <h1>Member membership report</h1>
+
+
+                            <t t-foreach="o.mmp_ids" t-as="mmp">
+                                <div t-field="mmp.name"/>
+                            </t>
+                        </div>
+                        <div class="footer">
+                            <small></small>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

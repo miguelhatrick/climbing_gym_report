@@ -30,15 +30,19 @@
                            <h3>Header title</h3>
                         </div>
                         <div class="page">
-                            <div style="text-align=center">
-                            <h1>Monthly report</h1>
-                            <strong>
-                                <span t-field="meg.name"/> - <span t-field="meg.year"/> /<span t-field="meg.month"/>
-                            </strong>
-                            <strong>
-                                <span t-field="meg.date_start"/> - <span t-field="meg.date_end"/>
-                            </strong>
-                                </div>
+                            <div style="text-align: center; width: 100%;">
+                                <h1>
+                                    <span t-field="meg.name"/>
+                                </h1>
+
+                                <h2>Period</h2>
+                                <strong>
+                                    <span t-field="meg.date_start"/>
+                                    -
+                                    <span t-field="meg.date_end"/>
+                                </strong>
+
+                            </div>
                         </div>
 
                         <div class="page" style="page-break-before:always;">
@@ -47,13 +51,23 @@
                         </div>
 
                         <div class="page" style="page-break-before:always;">
-                            <h2>Tickets</h2>
+                            <h2>Tickets report</h2>
                             <div id="ticket_data"></div>
                         </div>
 
                         <div class="page" style="page-break-before:always;">
-                            <h2></h2>
-                            <div id=""></div>
+                            <h2>Member access packages sales</h2>
+                            <div id="map_sales_data"></div>
+                        </div>
+
+                         <div class="page" style="page-break-before:always;">
+                            <h2>Event reservation report</h2>
+                            <div id="event_data"></div>
+                        </div>
+
+                        <div class="page" style="page-break-before:always;">
+                            <h2>Sales</h2>
+                            <div id="sales_data"></div>
                         </div>
 
                          <div class="page" style="page-break-before:always;">
@@ -65,23 +79,9 @@
                             <h2></h2>
                             <div id=""></div>
                         </div>
-
-                         <div class="page" style="page-break-before:always;">
-                            <h2></h2>
-                            <div id=""></div>
-                        </div>
-
-                        <div class="page" style="page-break-before:always;">
-                            <h2></h2>
-                            <div id=""></div>
-                        </div>
-
-
-
-
 
                         <div class="footer">
-                            <p>Generado:
+                            <p>Generated on:
                                 <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
                             </p>
                             <small>Climbing gym report module</small>
@@ -92,6 +92,303 @@
             </t>
 
         </template>
+
+
+
+        <template id="email_report_sales_data" inherit_id="email_report_template" name="Report event sales data">
+            <xpath expr="//div[@id='sales_data']" position="inside">
+
+                <p>This report shows the sales made between the following dates:
+                    <strong>
+                        <strong>
+                            <span t-field="meg.date_start"/>
+                            -
+                            <span t-field="meg.date_end"/>
+                        </strong>
+                    </strong>
+                </p>
+
+                <h3>Total sales: <span t-esc="sale_data['totals']['total_pos'] + sale_data['totals']['total_website']"/></h3>
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <th>Product</th>
+                            <th>Variant</th>
+                            <th>Qty website</th>
+                            <th>Website</th>
+                            <th>Qty POS</th>
+                            <th>POS</th>
+                        </tr>
+
+                        <t t-foreach="sale_data['data']" t-as="product">
+
+                            <tr t-foreach="sale_data['data'][product]['products']" t-as="variant">
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['name']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['name']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_website']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_website']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_pos']"/>
+                                </td>
+                                <td>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['total_pos']"/>
+                                </td>
+
+                            </tr>
+
+                            <tr class="border-black">
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['data'][product]['total_qty_website']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['data'][product]['total_website']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['data'][product]['total_qty_pos']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['data'][product]['total_pos']"/>
+                                </th>
+                            </tr>
+
+
+                             <tr class="border-black">
+                                <th>
+                                    <div style="font-weight: bold">Subtotal <span t-esc="sale_data['data'][product]['name']"/>:</div>
+                                </th>
+                                <th>
+                                    Qty total:
+                                </th>
+                                <th>
+                                     <span t-esc="sale_data['data'][product]['total_qty_pos'] + sale_data['data'][product]['total_qty_website']"/>
+                                </th>
+                                <th>
+                                    Sale total:
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['data'][product]['total_website'] + sale_data['data'][product]['total_pos']"/>
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+
+
+
+                        </t>
+
+
+                        <tr class="border-black">
+                                <th>
+                                    <div style="font-weight: bold">Totals :</div>
+                                </th>
+                                <th>
+                                    <div></div>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['totals']['total_qty_website']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['totals']['total_website']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['totals']['total_qty_pos']"/>
+                                </th>
+                                <th>
+                                    <span t-esc="sale_data['totals']['total_pos']"/>
+                                </th>
+                            </tr>
+
+
+                    </tbody>
+                </table>
+
+
+                <h3>Website sales</h3>
+                    <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % sales_data_web_cake"
+                     style="max-height: 500px;"/>
+
+                <br/>
+                <h3>POS sales</h3>
+                    <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % sales_data_pos_cake"
+                     style="max-height: 500px;"/>
+
+
+
+
+
+            </xpath>
+
+        </template>
+
+
+
+
+
+
+        <template id="email_report_event_reservation_data" inherit_id="email_report_template" name="Report event reservation data">
+            <xpath expr="//div[@id='event_data']" position="inside">
+
+                <p>This report shows the reserves made between the following dates:
+                    <strong>
+                        <strong>
+                            <span t-field="meg.date_start"/>
+                            -
+                            <span t-field="meg.date_end"/>
+                        </strong>
+                    </strong>
+                </p>
+
+                <div t-foreach="event_data" t-as="location">
+
+                <h3><span t-esc="event_data[location]['name']"/></h3>
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <th>Event</th>
+                            <th>Total reservations</th>
+                            <th>Assistance percentage</th>
+                        </tr>
+
+                        <tr t-foreach="event_data[location]['events']" t-as="event">
+                            <td>
+                                <span t-esc="event_data[location]['events'][event]['name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="event_data[location]['events'][event]['reservations']"/>
+                            </td>
+                            <td>
+                                <span t-esc="event_data[location]['events'][event]['assistance']"/>
+                            </td>
+                        </tr>
+
+                        <tr class="border-black">
+                            <td>
+                                <div style="font-weight: bold">Total :</div>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="event_data[location]['reservations']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="event_data[location]['assistance']"/>
+                                </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                </div>
+
+            </xpath>
+
+        </template>
+
+
+
+
+
+
+
+
+
+          <template id="map_sales_data" inherit_id="email_report_template" name="Report MAP sales">
+            <xpath expr="//div[@id='map_sales_data']" position="inside">
+
+                <p>This report shows the sales between the following dates:
+                    <strong>
+                        <strong>
+                            <span t-field="meg.date_start"/>
+                            -
+                            <span t-field="meg.date_end"/>
+                        </strong>
+                    </strong>
+                </p>
+
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <th>Packet type</th>
+                            <th>Total access credits quantity</th>
+                            <th>Remaining access credits</th>
+
+                        </tr>
+
+                        <tr t-foreach="map_sales_data" t-as="cont">
+                            <td>
+                                <span t-esc="cont['name']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['amount']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['remaining']"/>
+                            </td>
+                        </tr>
+
+                        <tr class="border-black">
+                            <td>
+                                <div style="font-weight: bold">Total :</div>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="map_sales_data_totals['amount']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="map_sales_data_totals['remaining']"/>
+                                </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                <img class="media-object"
+                     t-att-src="'data:image/png;base64,%s' % map_sales_graph"
+                     style="max-height: 500px;"/>
+
+            </xpath>
+
+        </template>
+
 
 
         <template id="email_report_membership_data" inherit_id="email_report_template" name="Report membership data">
@@ -106,21 +403,11 @@
                 <table class="table table-condensed" style="border: 1px solid #9999">
                     <tbody>
                         <tr class="border-black">
-                            <td>
-                                <strong>Membership type</strong>
-                            </td>
-                            <td>
-                                <strong>Pending</strong>
-                            </td>
-                            <td>
-                                <strong>Active</strong>
-                            </td>
-                            <td>
-                                <strong>Overdue</strong>
-                            </td>
-                            <td>
-                                <strong>Cancelled</strong>
-                            </td>
+                            <th>Membership type</th>
+                            <th>Pending</th>
+                            <th>Active</th>
+                            <th>Overdue</th>
+                            <th>Cancelled</th>
                         </tr>
 
                         <tr t-foreach="membership_status" t-as="cont">
@@ -144,7 +431,7 @@
 
                         <tr class="border-black">
                             <td>
-                                <b>Total :</b>
+                                <div style="font-weight: bold">Total :</div>
                             </td>
                             <td>
                                 <strong>
@@ -186,7 +473,7 @@
 
                 <p>Total opened:
                     <strong>
-                        <span t-esc="ticket_status_totals['open'] + ticket_status_totals['close']"/>
+                        <span t-esc="ticket_status_totals['open']"/>
                     </strong>
                 </p>
 
@@ -209,18 +496,10 @@
                 <table class="table table-condensed" style="border: 1px solid #9999">
                     <tbody>
                         <tr class="border-black">
-                            <td>
-                                <strong>Category</strong>
-                            </td>
-                            <td>
-                                <strong>Open</strong>
-                            </td>
-                            <td>
-                                <strong>Closed</strong>
-                            </td>
-                            <td>
-                                <strong>Response (days)</strong>
-                            </td>
+                            <th>Category</th>
+                            <th>Open</th>
+                            <th>Closed</th>
+                            <th>Response (days)</th>
                         </tr>
 
                         <tr t-foreach="ticket_status" t-as="cont">

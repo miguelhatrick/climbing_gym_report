@@ -21,12 +21,18 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+
         'data/digest_data.xml',
         'data/mass_mail.xml',
+
         'views/email_report.xml',
         'views/dashboard.xml',
-        'views/report/report_template.xml',
+
         'views/report/email_report.xml',
+        'views/report/event_monthly_group_report.xml',
+        'views/report/member_membership_report.xml',
+        'views/report/report_template.xml',
+
         'views/menu.xml'
 
 
@@ -36,3 +42,4 @@
         # 'demo/demo.xml',
     ],
 }
+
