@@ -39,7 +39,7 @@
 
                                     <tr t-foreach="meg.event_content_ids_active.sorted(key=lambda r: r.event_monthly_id.name)" t-as="cont">
                                         <td>
-                                            <span><span t-if="company.name"/></span>
+                                            
                                         </td>
                                         <td>
                                             <span t-field="cont.member_membership_id.partner_id.firstname"/>

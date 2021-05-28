@@ -585,7 +585,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+
                 <img class="media-object"
                      t-att-src="'data:image/png;base64,%s' % ticket_bar_graph"
                      style="max-height: 500px;"/>
