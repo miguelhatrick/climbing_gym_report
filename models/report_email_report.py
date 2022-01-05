@@ -316,7 +316,7 @@ class ReportEmailReport(models.AbstractModel):
         # Membership type
         _membership_ids = self.env['climbing_gym.membership'].search([('state', '=', 'active')], order='name desc')
 
-        _status_list = ['pending', 'active', 'overdue', 'cancel']
+        _status_list = ['pending', 'active', 'overdue', 'pending_payment', 'cancel']
         _membership_status = []
         _membership_status_totals = {}
 
