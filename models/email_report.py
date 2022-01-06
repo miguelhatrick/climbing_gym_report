@@ -21,7 +21,7 @@ class EmailReport(models.Model):
     for i in range(1, 13):
         months_choices.append((i, date(currentYear, i, 1).strftime('%B')))
 
-    for i in range(currentYear, currentYear + 5):
+    for i in range(2020, 2030):
         years_choices.append((i, str(i)))
 
     for i in range(1, 54):

@@ -404,6 +404,7 @@ class ReportEmailReport(models.AbstractModel):
         bars1_pending = []
         bars2_active = []
         bars3_overdue = []
+        bars4_pending_payment = []
 
         _titles = []
         _bars = {}
@@ -411,31 +412,39 @@ class ReportEmailReport(models.AbstractModel):
             _titles.append(_m['name'])
 
             for _key in _m:
-                if 'name' in _key:
+                if 'name' == _key:
                     continue
-                if 'pending' in _key:
+                if 'pending' == _key:
                     bars1_pending.append(_m[_key])
-                if 'active' in _key:
+                if 'active' == _key:
                     bars2_active.append(_m[_key])
-                if 'overdue' in _key:
+                if 'overdue' == _key:
                     bars3_overdue.append(_m[_key])
+                if 'pending_payment' == _key:
+                    bars4_pending_payment.append(_m[_key])
 
         # bar width
         barWidth = 1
 
         # Heights of bars1 + bars2
-        bars = np.add(bars1_pending, bars2_active).tolist()
+        bars1 = np.add(bars1_pending, bars2_active).tolist()
+        bars2 = np.add(bars1, bars2_active).tolist()
 
         # The position of the bars on the x-axis
         r = range(0, len(_titles))
 
         # Create brown bars
         plt.bar(r, bars1_pending, color='#afba2f', edgecolor='white', width=barWidth, label=_("Pending"))
+
         # Create green bars (middle), on top of the first ones
         plt.bar(r, bars2_active, bottom=bars1_pending, color='#557f2d', edgecolor='white', width=barWidth,
                 label=_("Active"))
+
         # Create green bars (top)
-        plt.bar(r, bars3_overdue, bottom=bars, color='#b8312a', edgecolor='white', width=barWidth, label=_("Overdue"))
+        plt.bar(r, bars3_overdue, bottom=bars1, color='#b8312a', edgecolor='white', width=barWidth, label=_("Overdue"))
+
+        # Create green bars (top)
+        plt.bar(r, bars4_pending_payment, bottom=bars2, color='violet', edgecolor='black', width=barWidth, label=_("Pending payment"))
 
         # Custom X axis
         plt.xticks(r, _titles, fontweight='bold')
