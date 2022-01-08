@@ -316,7 +316,7 @@ class ReportEmailReport(models.AbstractModel):
         # Membership type
         _membership_ids = self.env['climbing_gym.membership'].search([('state', '=', 'active')], order='name desc')
 
-        _status_list = ['pending', 'active', 'overdue', 'pending_payment', 'cancel']
+        _status_list = ['pending', 'pending_payment', 'active', 'overdue', 'cancel']
         _membership_status = []
         _membership_status_totals = {}
 
@@ -428,7 +428,7 @@ class ReportEmailReport(models.AbstractModel):
 
         # Heights of bars1 + bars2
         bars1 = np.add(bars1_pending, bars2_active).tolist()
-        bars2 = np.add(bars1, bars2_active).tolist()
+        bars2 = np.add(bars1, bars3_overdue).tolist()
 
         # The position of the bars on the x-axis
         r = range(0, len(_titles))
@@ -448,12 +448,12 @@ class ReportEmailReport(models.AbstractModel):
 
         # Custom X axis
         plt.xticks(r, _titles, fontweight='bold')
-        plt.xlabel("Membership")
+        plt.xlabel(_("Membership"))
 
         plt.legend()
 
-        # px = 1 / plt.rcParams['figure.dpi']  # pixel in inches
-        # plt.subplots(figsize=(1200 * px, 400 * px))
+        # px = 1 #/ plt.rcParams['figure.dpi']  # pixel in inches
+        # plt.subplots(figsize=(1200 * px, 600 * px))
 
         # Margins
         # plt.subplots_adjust(bottom=0.3, top=0.9)

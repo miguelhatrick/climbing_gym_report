@@ -471,6 +471,7 @@
                         <tr class="border-black">
                             <th>Membership type</th>
                             <th>Pending</th>
+                            <th>Pending payment</th>
                             <th>Active</th>
                             <th>Overdue</th>
                             <th>Cancelled</th>
@@ -482,6 +483,9 @@
                             </td>
                             <td>
                                 <span t-esc="cont['pending']"/>
+                            </td>
+                            <td>
+                                <span t-esc="cont['pending_payment']"/>
                             </td>
                             <td>
                                 <span t-esc="cont['active']"/>
@@ -502,6 +506,11 @@
                             <td>
                                 <strong>
                                     <span t-esc="membership_status_totals['pending']"/>
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    <span t-esc="membership_status_totals['pending_payment']"/>
                                 </strong>
                             </td>
                             <td>
