@@ -1,0 +1,108 @@
+<odoo>
+    <data>
+        <report id="report_school_group_pdf"
+                string="PDF Report"
+                model="climbing_gym_school.course"
+                report_type="qweb-pdf"
+                name="climbing_gym_report.report_event_monthly_group_template"
+        />
+
+        <report id="report_school_group_web"
+                string="WEB Report"
+                model="climbing_gym_school.course"
+                report_type="qweb-html"
+                name="climbing_gym_report.report_school_course_template"
+        />
+
+        <template id="report_school_course_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="_course">
+                    <t t-call="climbing_gym_report.external_layout_climbing_gym">
+                        <div class="header"></div>
+                        <div class="page">
+                            <h2>Course report</h2>
+                            <h3>
+                                <span t-field="_course.name"/>
+                                -
+                                <span t-field="_course.description"/>
+                            </h3>
+
+                            <p>This report shows the students status on this date :
+                                <strong>
+                                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                                </strong>
+                            </p>
+
+                            <t t-set="_content_arr"
+                               t-value="[_course.accepted_course_students_ids, _course.pending_course_students_ids, _course.cancelled_course_students_ids]"/>
+
+                            <t t-foreach="_content_arr" t-as="_content">
+                                <div class="page" style="page-break-before:always;">
+                                    <t name="Students table" t-name="climbing_gym_report.course_report_students_table"/>
+                                </div>
+                            </t>
+
+
+                        </div>
+                        <div class="footer">
+                            <p>Generated:
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+
+        </template>
+
+
+        <template id="climbing_gym_report.course_report_students_table" name="Students table">
+
+            <table class="table table-condensed" style="border: 1px solid #9999">
+                <tbody>
+                    <tr class="border-black">
+                        <th>Id</th>
+                        <th>Lastname</th>
+                        <th>Name</th>
+                        <th>VAT</th>
+                        <th>email</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+
+                    <tr t-foreach="_content.sorted(key=lambda r: r.partner_id.lastname)"
+                        t-as="cont">
+                        <td>
+                            <span t-field="cont.id"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.partner_id.lastname"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.partner_id.firstname"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.partner_id.main_id_number"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.partner_id.email"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.partner_id.phone"/>
+                            /
+                            <span t-field="cont.partner_id.mobile"/>
+                        </td>
+                        <td>
+                            <span t-field="cont.state"/>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </template>
+
+
+    </data>
+</odoo>

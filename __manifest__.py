@@ -31,6 +31,8 @@
         'views/report/email_report.xml',
         'views/report/event_monthly_group_report.xml',
         'views/report/member_membership_report.xml',
+
+        'views/report/school_course_report.xml',
         'views/report/report_template.xml',
 
         'views/menu.xml'
