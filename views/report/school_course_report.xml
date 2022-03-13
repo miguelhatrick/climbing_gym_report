@@ -4,7 +4,7 @@
                 string="PDF Report"
                 model="climbing_gym_school.course"
                 report_type="qweb-pdf"
-                name="climbing_gym_report.report_event_monthly_group_template"
+                name="climbing_gym_report.report_school_course_template"
         />
 
         <report id="report_school_group_web"
@@ -37,13 +37,17 @@
                                t-value="[_course.accepted_course_students_ids, _course.pending_course_students_ids, _course.cancelled_course_students_ids]"/>
 
                             <t t-foreach="_content_arr" t-as="_content">
-                                <div class="page" style="page-break-before:always;">
-                                    <t name="Students table" t-name="climbing_gym_report.course_report_students_table"/>
-                                </div>
+                                <t t-if="len(_content) &gt; 0">
+                                    <div class="page" style="page-break-before:always;">
+                                        <h2>
+                                            <span t-field="_content[0].state"/>
+                                        </h2>
+                                        <div id="students_table"></div>
+                                    </div>
+                                </t>
                             </t>
-
-
                         </div>
+                        <t name="Students table" t-name="climbing_gym_report.course_report_students_table"/>
                         <div class="footer">
                             <p>Generated:
                                 <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
@@ -56,50 +60,50 @@
         </template>
 
 
-        <template id="climbing_gym_report.course_report_students_table" name="Students table">
+        <template id="climbing_gym_report" inherit_id="report_school_course_template" name="Student table">
+            <xpath expr="//div[@id='students_table']" position="inside">
+                <table class="table table-condensed" style="border: 1px solid #9999">
+                    <tbody>
+                        <tr class="border-black">
+                            <th>Id</th>
+                            <th>Lastname</th>
+                            <th>Name</th>
+                            <th>VAT</th>
+                            <th>email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                        </tr>
 
-            <table class="table table-condensed" style="border: 1px solid #9999">
-                <tbody>
-                    <tr class="border-black">
-                        <th>Id</th>
-                        <th>Lastname</th>
-                        <th>Name</th>
-                        <th>VAT</th>
-                        <th>email</th>
-                        <th>Phone</th>
-                        <th>Status</th>
-                    </tr>
+                        <tr t-foreach="_content.sorted(key=lambda r: r.partner_id.lastname.lower())"
+                            t-as="cont">
+                            <td>
+                                <span t-field="cont.id"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.lastname"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.firstname"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.main_id_number"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.email"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.phone"/>
+                                /
+                                <span t-field="cont.partner_id.mobile"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.state"/>
+                            </td>
 
-                    <tr t-foreach="_content.sorted(key=lambda r: r.partner_id.lastname)"
-                        t-as="cont">
-                        <td>
-                            <span t-field="cont.id"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.partner_id.lastname"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.partner_id.firstname"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.partner_id.main_id_number"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.partner_id.email"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.partner_id.phone"/>
-                            /
-                            <span t-field="cont.partner_id.mobile"/>
-                        </td>
-                        <td>
-                            <span t-field="cont.state"/>
-                        </td>
-
-                    </tr>
-                </tbody>
-            </table>
-
+                        </tr>
+                    </tbody>
+                </table>
+            </xpath>
 
         </template>
 
