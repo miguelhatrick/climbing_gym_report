@@ -69,6 +69,7 @@
                             <th>Lastname</th>
                             <th>Name</th>
                             <th>VAT</th>
+                            <th>Birthdate</th>
                             <th>email</th>
                             <th>Phone</th>
                             <th>Status</th>
@@ -87,6 +88,12 @@
                             </td>
                             <td>
                                 <span t-field="cont.partner_id.main_id_number"/>
+                            </td>
+                            <td>
+                                <span t-field="cont.partner_id.birthdate_date"/>
+                                <t t-if="not cont.partner_id.birthdate_date">
+                                    <span t-field="cont.partner_id.mobile"/>
+                                </t>
                             </td>
                             <td>
                                 <span t-field="cont.partner_id.email"/>

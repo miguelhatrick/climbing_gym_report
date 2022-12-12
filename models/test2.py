@@ -23,11 +23,11 @@ r = range(0, len(_titles))
 barWidth = 1
 
 # Create brown bars
-plt.bar(r, bars1_pending, color='#afba2f', edgecolor='white', width=barWidth, label='Pending')
+plt.bar(r, bars1_pending, color='#afba2f', edgecolor='white', width=barWidth, label=_('Pending'))
 # Create green bars (middle), on top of the first ones
-plt.bar(r, bars2_active, bottom=bars1_pending, color='#557f2d', edgecolor='white', width=barWidth, label='Active')
+plt.bar(r, bars2_active, bottom=bars1_pending, color='#557f2d', edgecolor='white', width=barWidth, label=_('Active'))
 # Create green bars (top)
-plt.bar(r, bars3_overdue, bottom=bars, color='#b8312a', edgecolor='white', width=barWidth, label='Overdue')
+plt.bar(r, bars3_overdue, bottom=bars, color='#b8312a', edgecolor='white', width=barWidth, label=_('Overdue'))
 
 # Custom X axis
 plt.xticks(r, _titles, fontweight='bold')
