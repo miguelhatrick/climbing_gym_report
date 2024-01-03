@@ -189,7 +189,7 @@
 
                         <t t-foreach="sale_data['data']" t-as="product">
 
-                            <tr t-foreach="sale_data['data'][product]['products']" t-as="variant">
+                            <tr t-foreach="sale_data['data'][product]['products'].sorted()" t-as="variant">
                                 <td>
                                     <span t-esc="sale_data['data'][product]['name']"/>
                                 </td>
