@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 import base64
-from datetime import datetime, timedelta, date, timezone
-from odoo import models, fields, api, _
-
-from wordcloud import WordCloud
-import matplotlib
-
-import matplotlib.pyplot as plt
 import io
 
+import matplotlib
+import matplotlib.pyplot as plt
 import numpy as np
+from wordcloud import WordCloud
+
+from odoo import _, api, models
 
 
 class ReportEmailReport(models.AbstractModel):
@@ -34,7 +32,6 @@ class ReportEmailReport(models.AbstractModel):
         _map_sales_data, _map_sales_data_totals = self._get_map_sales_data(_docs.date_start, _docs.date_end)
         _map_sales_graph = self._get_map_cake_graph(_map_sales_data)
 
-
         # EVENT GROUP STATUS
         _event_data = self._get_event_status(_docs.date_start, _docs.date_end)
 
@@ -56,10 +53,6 @@ class ReportEmailReport(models.AbstractModel):
 
         _invoice_data = self._get_invoice_status(_docs.date_start, _docs.date_end)
         _invoice_data_cake = self._get_sales_invoice_graph(_invoice_data)
-
-
-
-
 
         # General invoicing
 
@@ -86,8 +79,6 @@ class ReportEmailReport(models.AbstractModel):
             'ticket_word_cloud': _ticket_word_cloud,
             'ticket_bar_graph': _ticket_bar_graph,
 
-
-
             'sale_data': _sales_data,
             'sales_data_web_cake': _sales_data_web_cake,
             'sales_data_pos_cake': _sales_data_pos_cake,
@@ -96,7 +87,6 @@ class ReportEmailReport(models.AbstractModel):
             'invoice_data_pos_cake': _invoice_data_cake,
 
         }
-
 
     def _get_map_sales_data(self, start_date, end_date):
 
@@ -133,14 +123,13 @@ class ReportEmailReport(models.AbstractModel):
 
         return _map_sale_data, _map_sale_data_totals
 
-
     def _get_invoice_status(self, start_date, end_date):
         _invoice_status = {}
 
         # find members for each status
         _invoices = self.env['account.invoice'].search(
             [('date_invoice', '>=', start_date), ('date_invoice', '<=', end_date),
-             ('state', 'in', ['in_payment','paid'])],
+             ('state', 'in', ['in_payment', 'paid'])],
             order='id asc')
 
         _totals = {
@@ -175,7 +164,7 @@ class ReportEmailReport(models.AbstractModel):
         # find members for each status
         _pos_orders = self.env['pos.order'].search(
             [('date_order', '>=', start_date), ('date_order', '<=', end_date),
-             ('state', 'in', ['done','invoiced'])],
+             ('state', 'in', ['done', 'invoiced'])],
             order='id asc')
 
         _website_orders = self.env['sale.order'].search(
@@ -189,7 +178,7 @@ class ReportEmailReport(models.AbstractModel):
         }
 
         _totals = {
-            'total_pos' : 0,
+            'total_pos': 0,
             'total_website': 0,
             'total_qty_website': 0,
             'total_qty_pos': 0
@@ -204,7 +193,7 @@ class ReportEmailReport(models.AbstractModel):
 
                 for _line in _lines:
                     _tmpl = _line.product_id.product_tmpl_id.id
-                    _product_id = f'{_line.product_id.id}_{_line.lst_price}' # we want to group by ptoduct and price
+                    _product_id = f'%s_%s' % (_line.product_id.id, _line.lst_price)  # we want to group by ptoduct and price
 
                     if _tmpl not in _sales_data:
                         _sales_data[_tmpl] = {
@@ -239,11 +228,7 @@ class ReportEmailReport(models.AbstractModel):
                     _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.product_uom_qty
                     _totals['total_qty_%s' % _domain] += _line.product_uom_qty
 
-
-
-
         return {'data': _sales_data, 'totals': _totals}
-
 
     def _get_event_status(self, start_date, end_date):
 
@@ -295,7 +280,7 @@ class ReportEmailReport(models.AbstractModel):
         for _location in _event_data:
             for _event in _event_data[_location]['events']:
                 _event_data[_location]['events'][_event]['assistance'] = _event_data[_location]['events'][_event]['reservations'] / (
-                            _event_data[_location]['events'][_event]['seats_max'] / 100)
+                        _event_data[_location]['events'][_event]['seats_max'] / 100)
 
                 _event_data[_location]['reservations'] += _event_data[_location]['events'][_event]['reservations']
 
@@ -305,11 +290,6 @@ class ReportEmailReport(models.AbstractModel):
                     _event_data[_location]['assistance'] = (_event_data[_location]['assistance'] + _event_data[_location]['events'][_event]['assistance']) / 2
 
         return _event_data
-
-
-
-
-
 
     def _get_membership_status(self, report_id):
 
@@ -572,8 +552,7 @@ class ReportEmailReport(models.AbstractModel):
         my_stringIObytes.seek(0)
         return base64.b64encode(my_stringIObytes.read()).decode('utf-8')
 
-
-    def _get_sales_cake_graph(self, _sales_data, _domain = 'website'):
+    def _get_sales_cake_graph(self, _sales_data, _domain='website'):
         plt.clf()
 
         names = []
@@ -585,9 +564,9 @@ class ReportEmailReport(models.AbstractModel):
 
         # Label distance: gives the space between labels and the center of the pie
         # labels=names, labeldistance=1.15,
-        plt.pie(values, labels=names, labeldistance=1.3,  wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
+        plt.pie(values, labels=names, labeldistance=1.3, wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
 
-        #plt.legend()
+        # plt.legend()
 
         my_stringIObytes = io.BytesIO()
         plt.savefig(my_stringIObytes, format='png')
