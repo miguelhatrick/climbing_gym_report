@@ -197,7 +197,7 @@
                                     <span t-esc="sale_data['data'][product]['products'][variant]['name']"/>
                                 </td>
                                 <td>
-                                    //unit price
+<!--                                    //unit price-->
                                     <span t-esc="sale_data['data'][product]['products'][variant]['name']"/>
                                 </td>
                                 <td>
