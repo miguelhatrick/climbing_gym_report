@@ -189,7 +189,7 @@
 
                         <t t-foreach="sale_data['data']" t-as="product">
 
-                            <tr t-foreach="sale_data['data'][product]['products']['']" t-as="variant">
+                            <tr t-foreach="sale_data['data'][product]['products']" t-as="variant">
                                 <td>
                                     <span t-esc="sale_data['data'][product]['name']"/>
                                 </td>
@@ -198,7 +198,7 @@
                                 </td>
                                 <td>
 <!--                                    //unit price-->
-                                    <span t-esc="sale_data['data'][product]['products'][variant]['name']"/>
+                                    <span t-esc="sale_data['data'][product]['price_unit']"/>
                                 </td>
                                 <td>
                                     <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_website']"/>

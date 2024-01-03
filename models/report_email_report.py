@@ -200,6 +200,7 @@ class ReportEmailReport(models.AbstractModel):
                             'name': _line.product_id.product_tmpl_id.name,
                             'products': {},
                             'total_website': 0,
+                            'price_unit': _line.price_unit,
                             'total_pos': 0,
                             'total_qty_website': 0,
                             'total_qty_pos': 0
@@ -208,6 +209,7 @@ class ReportEmailReport(models.AbstractModel):
                     if _product_id not in _sales_data[_tmpl]['products']:
                         _sales_data[_tmpl]['products'][_product_id] = {
                             'name': _line.product_id.default_code,
+                            'price_unit': _line.price_unit,
                             'total_website': 0,
                             'total_pos': 0,
                             'total_qty_website': 0,
