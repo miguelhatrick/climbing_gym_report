@@ -229,6 +229,7 @@ class ReportEmailReport(models.AbstractModel):
                         _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.product_uom_qty
                         _totals['total_qty_%s' % _domain] += _line.product_uom_qty
 
+                    _sales_data[_tmpl]['products'].sort()
         return {'data': _sales_data, 'totals': _totals}
 
     def _get_event_status(self, start_date, end_date):
