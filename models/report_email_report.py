@@ -192,8 +192,8 @@ class ReportEmailReport(models.AbstractModel):
                 _lines = _order.lines if _domain == 'pos' else _order.order_line
 
                 for _line in _lines:
-                    _tmpl = _line.product_id.product_tmpl_id.id
-                    _product_id = '%s_%s' % (_line.product_id.id, _line.price_unit)  # we want to group by ptoduct and price
+                    _tmpl = '%s_%s' % (_line.product_id.product_tmpl_id.id, _line.price_unit)  # we want to group by ptoduct and price
+                    _product_id = _line.product_id.id
 
                     if _tmpl not in _sales_data:
                         _sales_data[_tmpl] = {
