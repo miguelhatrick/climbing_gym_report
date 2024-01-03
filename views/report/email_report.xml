@@ -198,7 +198,7 @@
                                 </td>
                                 <td>
 <!--                                    //unit price-->
-                                    <span t-esc="sale_data['data'][product]['price_unit']"/>
+                                    <span t-esc="sale_data['data'][product]['products'][variant]['price_unit']"/>
                                 </td>
                                 <td>
                                     <span t-esc="sale_data['data'][product]['products'][variant]['total_qty_website']"/>
