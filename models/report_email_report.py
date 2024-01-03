@@ -193,7 +193,7 @@ class ReportEmailReport(models.AbstractModel):
 
                 for _line in _lines:
                     _tmpl = _line.product_id.product_tmpl_id.id
-                    _product_id = f'%s_%s' % (_line.product_id.id, _line.lst_price)  # we want to group by ptoduct and price
+                    _product_id = '%s_%s' % (_line.product_id.id, _line.lst_price)  # we want to group by ptoduct and price
 
                     if _tmpl not in _sales_data:
                         _sales_data[_tmpl] = {
