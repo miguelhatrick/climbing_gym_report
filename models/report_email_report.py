@@ -192,15 +192,14 @@ class ReportEmailReport(models.AbstractModel):
                 _lines = _order.lines if _domain == 'pos' else _order.order_line
 
                 for _line in _lines:
-                    _tmpl = '%s_%s' % (_line.product_id.product_tmpl_id.id, _line.price_unit)  # we want to group by ptoduct and price
-                    _product_id = _line.product_id.id
+                    _tmpl = _line.product_id.product_tmpl_id.id
+                    _product_id = '%s_%s' % (_line.product_id.id, _line.price_unit)  # we want to group by ptoduct and price
 
                     if _tmpl not in _sales_data:
                         _sales_data[_tmpl] = {
                             'name': _line.product_id.product_tmpl_id.name,
                             'products': {},
                             'total_website': 0,
-                            'price_unit': _line.price_unit,
                             'total_pos': 0,
                             'total_qty_website': 0,
                             'total_qty_pos': 0
@@ -216,19 +215,19 @@ class ReportEmailReport(models.AbstractModel):
                             'total_qty_pos': 0
                         }
 
-                _sales_data[_tmpl]['products'][_product_id]['total_%s' % _domain] += _line.price_subtotal
-                _sales_data[_tmpl]['total_%s' % _domain] += _line.price_subtotal
-                _totals['total_%s' % _domain] += _line.price_subtotal
+                    _sales_data[_tmpl]['products'][_product_id]['total_%s' % _domain] += _line.price_subtotal
+                    _sales_data[_tmpl]['total_%s' % _domain] += _line.price_subtotal
+                    _totals['total_%s' % _domain] += _line.price_subtotal
 
-                if 'pos' in _domain:
-                    _sales_data[_tmpl]['products'][_product_id]['total_qty_%s' % _domain] += _line.qty
-                    _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.qty
-                    _totals['total_qty_%s' % _domain] += _line.qty
+                    if 'pos' in _domain:
+                        _sales_data[_tmpl]['products'][_product_id]['total_qty_%s' % _domain] += _line.qty
+                        _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.qty
+                        _totals['total_qty_%s' % _domain] += _line.qty
 
-                if 'website' in _domain:
-                    _sales_data[_tmpl]['products'][_product_id]['total_qty_%s' % _domain] += _line.product_uom_qty
-                    _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.product_uom_qty
-                    _totals['total_qty_%s' % _domain] += _line.product_uom_qty
+                    if 'website' in _domain:
+                        _sales_data[_tmpl]['products'][_product_id]['total_qty_%s' % _domain] += _line.product_uom_qty
+                        _sales_data[_tmpl]['total_qty_%s' % _domain] += _line.product_uom_qty
+                        _totals['total_qty_%s' % _domain] += _line.product_uom_qty
 
         return {'data': _sales_data, 'totals': _totals}
 
